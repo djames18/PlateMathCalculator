@@ -1,0 +1,20 @@
+<h3>Barbell Plate Calculator:</h3>
+
+<label for="barbell">Barbell Weight:</label>
+<input type="number" id="barbell" name="barbell" [(ngModel)]="barbell" min="0" max="500" required>
+
+<div *ngFor="let value of weights">
+  <label for="{{ value.name }}">{{ value.name }}:</label>
+  <input type="number" id="{{ value.name }}" name="{{ value.name }}" [(ngModel)]="value.count" min="0" max="25" required>
+</div>
+
+<h4>Total Weight:</h4>
+<p>{{ getTotalWeight() }}</p>
+
+<div class="slidecontainer">
+  <h4>Desired Barbell Weight: {{ desiredWeight }}</h4>
+  <input type="range" id="desiredweight" class="slider" name="desiredweight" [(ngModel)]="desiredWeight" step="5" min="{{ barbell }}" max="{{ getTotalWeight() }}" required>
+</div>
+
+<h4>Desired Weight Output: </h4>
+<p class="text-center">{{ calculateRequiredPlates() }}</p>
